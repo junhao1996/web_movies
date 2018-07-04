@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+/** 重置浏览器默认标签样式 */
+body,ul,li{margin:0;padding:0;}
+.xttblog{
+ width: 1200px;
+ height: 170px;
+ margin-top:50px;
+ margin-left: auto;
+ margin-right: auto;
+}
+.box{margin-left: 5px;margin-top: 5px;list-style-type:none;}
+.box:after{
+ content: ".";
+ display: block;
+ line-height: 0;
+ width:0;
+ height: 0;
+ clear: both;
+ visibility: hidden;
+ overflow: hidden;
+}
+.box li{float:left;line-height: 230px;}
+.box li a,.box li a:visited{
+ display:block;
+ border: 5px solid #ccc;
+ width: 380px;
+ height: 230px;
+ text-align: center;
+ margin-left: -5px;
+ margin-top: -5px;
+ position: relative;
+ z-index: 1;
+}
+.box li a:hover{border-color: #f00;z-index: 2;}
+.img{
+width:250px;
+height:250px
+}
+</style>
+<body>
+<!--{{url_for('static', filename='{{i.imgname}}')}}-->
+<!--{% for i in result %}-->
+<!--/static/TKZfKLDuEM.jpg-->
+<!--<div>-->
+    <!--<img src="/static/img/{{i.imgname}}" height="100px"width="100px" alt="">-->
+    <!--<p>{{i.imgname}}</p>-->
+<!--</div>-->
+<!--<div>-->
+
+<!--</div>-->
+
+
+<!--{%  endfor%}-->
+
+
+<div class="xttblog">
+
+ <ul class="box">
+
+     {%for i in range(1,10)%}
+     {% for j in result%}
+    {%if i<9%}
+  <li><a href="{{url_for('show_content',id=i+18)}}" title="{{i}}"><img class="img" src="/static/img/{{j.imgname}}"}/></a></li>
+     {%endif%}
+     {%endfor%}
+     {%endfor%}
+ </ul>
+
+</div>
+</body>
+<script>
+
+
+
+</script>
+</html>
