@@ -86,7 +86,7 @@ def get_movie(movie_id):
     # b = etree.tostring(a, encoding="utf-8", pretty_print=True, method="html")
     # s = b.decode("utf-8")
 
-    # with open("/home/zhang/图片/"+"1.txt","w") as f:
+    # with open("/home/zhang/图片/"+"2.txt","w") as f:
     #     f.write(res.text)
 
     # html_data = a.xpath('//img/@src')
@@ -95,12 +95,15 @@ def get_movie(movie_id):
     # data2 = a.xpath("//span/text()")
 
     soup = BeautifulSoup(res.text, "lxml")
-    # soup = BeautifulSoup(open('/home/zhang/图片/1.txt'))
+    # soup = BeautifulSoup(open('/home/zhang/图片/2.txt'))
     # 打开文件
+    # print(res.text)
 
-    s1 = soup.select(".info")[0].get_text()
+    s1 = soup.select(".info")
+    for i in s1:
+        print(i.get_text())
     print(s1)
-    s2 = soup.find_all("h1", class_="info")
+    s2 = soup.find_all("h1", class_="font14w")
     print(s2)
     s2 = soup.find("div", class_='info').h1.get_text()
     # s3 = soup.find_all('a')
@@ -119,10 +122,16 @@ def get_movie(movie_id):
     #     print(i.text)
     print("t2")
     # 演员actor   t4
+    # tt4 = soup.select()
+
     t4 = soup.select("#minfo .info a")
     for i in t4[0:5]:
         print(i.get_text())
     # 演员actor   t4
+
+
+
+
 
     for i in t4:
         print(i.get_text())
@@ -150,14 +159,9 @@ def get_movie(movie_id):
     t6 = soup.select(".img img")
     url = str(t6[0]).split('"')[3]
     img_url = "http:" + url
-    pachong(img_url)
+    # pachong(img_url)
 
-    # print(s5)
-    # print(s2)
-    # print(s4)
-    # for i in t5:
-    #     print(i.text)
-    #     print("**********8")
+
 
     movie_type = t5[6].text.split(' ')[0].split("：")[1]
     # print(time1)
@@ -166,6 +170,8 @@ def get_movie(movie_id):
     sss = Session()
     # sss.add(Movie(title=s2, content=t1, actor=actor, logintime=logintime, movie_type=movie_type, time=time1))
     # sss.commit()
+
+
 
 
 def pachong(img_url):
@@ -196,9 +202,9 @@ if __name__ == "__main__":
     # a = get_picture()
     # set(a)
     for i in range(50):
-        a = i + 22650
+        a = i + 22622
         get_movie(a)
-
+    # get_movie(22650)
     # a = time.time()
     # data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     # info = {

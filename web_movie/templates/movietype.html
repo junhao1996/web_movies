@@ -1,0 +1,19 @@
+{%extends "main.html"%}
+<style>
+
+
+</style>
+{%block body%}
+<div class="t1">
+    <ul>
+        {% for i in result%}
+
+        <li><a href="javascript:get_movie('{{i[0]}}')">{{i[0]}}</a></li>
+
+        {%endfor%}
+
+
+    </ul>
+
+</div>
+{% endblock%}

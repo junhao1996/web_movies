@@ -1,36 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{%extends "main.html"%}
 <style>
-    <!--.t1{-->
-    <!--text-align:center;-->
-    <!--}-->
+    .t1{
+    float:left;
+    text-align:center;
+    }
+    .t2{
+    float:left;
+    margin:500px;
+    }
 
 </style>
-<body>
-<h1>这是这个电影的详细内容</h1>
+{%block body%}
 <div class="t1">
-    <ul>
+
+</div>
+
+<div class="t2">
 
 
-        <li><h3>电影名称：</h3><span>{{res.title}}</span></li>
+    <br><br><br><br><br>
+        <h3>电影名称：</h3><span>{{res.title}}</span>
 
-        <li><h3>演&nbsp&nbsp &nbsp&nbsp  员：</h3>{{res.actor}}</li>
+        <h3>演&nbsp&nbsp &nbsp&nbsp  员：</h3>{{res.actor}}
 
-        <li><h3>上映时间：</h3>{{res.logintime}}</li>
+        <h3>上映时间：</h3>{{res.logintime}}
 
-        <li><h3>电影类型：</h3>{{res.movie_type}}</li>
+        <h3>电影类型：</h3>{{res.movie_type}}
 
-        <li><h3>电影时长：</h3>{{res.time}}</li>
+        <h3>电影时长：</h3>{{res.time}}
 
-        <li><h3>电影内容：</h3>{{res.content}}</li>
+        <h3>电影内容：</h3>{{res.content}}
 
 
 
 </div>
-
-</body>
-</html>
+{% endblock%}
