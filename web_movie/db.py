@@ -15,9 +15,10 @@ class DB():
         self.session.add(img)
         self.session.commit()
 
-    def read_img(self,pageset):
-        s = self.session.query(Img).slice((pageset-1)*10,pageset*10).all()
+    def read_img(self, pageset):
+        s = self.session.query(Img).slice((pageset - 1) * 10, pageset * 10).all()
         return s
+
     def read_count(self):
         s = self.session.query(func.count(Img.id)).first()
         self.session.commit()
@@ -27,8 +28,18 @@ class DB():
         res = self.session.query(Movie).filter(Movie.id == id).first()
         return res
 
-    def create_movie(self, title, content,actor,movie_type,time,logintime):
-        movie = Movie(title=title, content=content,actor = actor,movie_type = movie_type,time = time,logintime = logintime)
+    def read_logintime(self):
+        res = self.session.query(Movie.logintime, Movie.title).all()
+        return res
+
+    # 获取上映时间
+    def read_moviebytime(self, logintime):
+        res = self.session.query(Movie).filter(Movie.logintime == logintime).first()
+
+        return res
+
+    def create_movie(self, title, content, actor, movie_type, time, logintime):
+        movie = Movie(title=title, content=content, actor=actor, movie_type=movie_type, time=time, logintime=logintime)
 
         self.session.add(movie)
         self.session.commit()
@@ -36,8 +47,13 @@ class DB():
     def get_movietype(self):
         res = self.session.query(Movie.movie_type).all()
         return set(res)
-    def get_movie(self,type):
-        res = self.session.query(Movie).filter(Movie.movie_type==type).all()
+
+    def get_movie(self, type):
+        res = self.session.query(Movie).filter(Movie.movie_type == type).all()
+        return res
+
+    def get_onemovie(self, time):
+        res = self.session.query(Movie).filter(Movie.logintime == time).first()
         return res
 
     def create_user(self, username, password):
@@ -56,17 +72,18 @@ if __name__ == "__main__":
     # print(type(count))
     # print(count[0])
     # print(allpage)
-    a = d.read_img(1)
+    # a = d.read_img(1)
     # print(a)
+
+    a = d.read_logintime()
+    print(a)
+    s = [i[0] for i in a]
+    b = sorted(s)
+    c = d.read_moviebytime(b[0])
+    print(c)
+
     # for i,j in enumerate(a):
     #     print(i,j)
-
-
-
-
-
-
-
 
     # for i in range(10):
     #     d.create_movie("三国演绎","sdfsfgsgdsfgdsfgjndsgiudsbpfgin safjlskdjfnsdiozgisi")

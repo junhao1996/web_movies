@@ -49,8 +49,14 @@ height:40px;
 span{
 margin-left:110px;
 }
+.page{
 
+clear:both;
 
+text-align:center;
+position: relative;
+magin-bottom:330px;
+}
 
 
 
@@ -58,6 +64,8 @@ margin-left:110px;
 
 </style>
 <body>
+
+
 <!--{{url_for('static', filename='{{i.imgname}}')}}-->
 <!--{% for i in result %}-->
 <!--/static/TKZfKLDuEM.jpg-->
@@ -98,7 +106,9 @@ margin-left:110px;
     </ul>
 
 </div>
+<div class="page">
 <button>首页</button>
+    &nbsp;&nbsp;&nbsp;
 <select id="p" onchange="getpageimg()">
     <option value="Volvo">当前页{{dict1.newpage}}</option>
     {% for i in range(dict1.allpage)%}
@@ -109,6 +119,7 @@ margin-left:110px;
 
 </select>
 <button>尾页</button>
+    </div>
 
 <!--<ul class="pagination">-->
 

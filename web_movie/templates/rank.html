@@ -1,0 +1,11 @@
+{%extends "main.html"%}
+
+{%block body%}
+<h1>按照上映时间排序</h1>
+{%for i in result%}
+{{loop.index}} :       <a href="{{url_for('web_movie.show_onemovie',tt=i)}}"> {{title[loop.index]}}</a>         {{i}}<br>
+
+
+{%endfor%}
+
+{% endblock%}

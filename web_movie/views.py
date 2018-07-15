@@ -16,7 +16,7 @@ def show(newpage):
         print(i.imgname)
 
     count = db.read_count()[0]
-    allpage = int(count / 8)+1
+    allpage = int(count / 8) + 1
     dict1 = {
         "allpage": allpage,
         # 总页数
@@ -72,7 +72,25 @@ def movietype():
 def show_movie(tt):
     res = db.get_movie(tt)
     print("qqqq")
-    return render_template("show_typemovie.html", result=res)
+    return render_template("show_typemovie.html",type=tt, result=res)
+
+
+@new_blueprint.route("/show_onemovie/<string:tt>", methods=["GET", "POST"])
+def show_onemovie(tt):
+    res = db.get_onemovie(tt)
+    return render_template("show_rankmovie.html", result=res)
+
+
+@new_blueprint.route("/rank", methods=["GET", "POST"])
+def rank():
+    res = db.read_logintime()
+    print(res)
+
+    s = [i[0] for i in res]
+    c = [i[1] for i in res]
+    b = sorted(s)
+
+    return render_template("rank.html", result=b, title=c)
 
 
 @new_blueprint.route("/add", methods=['GET', "POST"])

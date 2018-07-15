@@ -6,18 +6,18 @@
 </head>
 <style>
     ul li{
-    font-size:40px;
+    font-size:30px;
     }
 </style>
-<body>
+<!--style="text-align:center"-->
+<body  >
+<div style="text-align:center"><h1 >这是{{type}}类型的电影</h1></div>
+
 {%for i in result%}
 <ul>
 
-    <li>{{i.title}}</li>
-    <li>{{i.content}}</li>
-    <li>{{i.actor}}</li>
-    <li>{{i.title}}</li>
-    <li>{{i.time}}</li>
+    <li> 电影名称： <a href="">{{i.title}}</a></li>
+
 </ul>
 {%endfor%}
 </body>

@@ -68,18 +68,22 @@ text-align:center
     <div class="menu">
 
         <button onclick="movie_type()">电影分类</button>
-        <button onclick="{{url_for('web_movie.movietype')}}">排行榜</button>
+        <button onclick="rank()">排行榜</button>
         <button onclick="movie_type()">最受欢迎电影</button>
         <button onclick="movie_type()">其他</button>
     </div>
+<!--{{url_for('web_movie.movietype')}}-->
 
 {% block body%}
 
 {% endblock%}
         <script>
+        function rank(){
+        window.location="/rank";
+        }
 
             function movie_type(){
-            window.location="/movie_type"
+            window.location="/movie_type";
             console.log("ddddddddddddddd")
         }
 
